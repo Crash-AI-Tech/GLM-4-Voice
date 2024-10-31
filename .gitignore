@@ -2,3 +2,6 @@
 *.DS_Store
 *.idea/
 test*
+*.pyc
+glm-4-voice-*
+

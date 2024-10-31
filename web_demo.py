@@ -27,7 +27,7 @@ from flow_inference import AudioDecoder
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--host", type=str, default="0.0.0.0")
-    parser.add_argument("--port", type=int, default="8888")
+    parser.add_argument("--port", type=int, default="6006")
     parser.add_argument("--flow-path", type=str, default="./glm-4-voice-decoder")
     parser.add_argument("--model-path", type=str, default="THUDM/glm-4-voice-9b")
     parser.add_argument("--tokenizer-path", type= str, default="THUDM/glm-4-voice-tokenizer")
@@ -170,8 +170,17 @@ if __name__ == "__main__":
             return [gr.update(visible=False), gr.update(visible=True)]
 
 
+    # 定义自定义 CSS
+    custom_css = """
+    #footer {
+        text-align: center;
+        color: #A9A9A9; /* 浅灰色 */
+        margin-top: 50px;
+        font-size: 14px;
+    }
+    """
     # Create the Gradio interface
-    with gr.Blocks(title="GLM-4-Voice Demo", fill_height=True) as demo:
+    with gr.Blocks(css=custom_css,title="GLM-4-Voice Demo", fill_height=True) as demo:
         with gr.Row():
             temperature = gr.Number(
                 label="Temperature",
@@ -249,6 +258,9 @@ if __name__ == "__main__":
 
         reset_btn.click(clear_fn, outputs=[chatbot, history_state, input_tokens, completion_tokens, detailed_error, output_audio, complete_audio])
         input_mode.input(clear_fn, outputs=[chatbot, history_state, input_tokens, completion_tokens, detailed_error, output_audio, complete_audio]).then(update_input_interface, inputs=[input_mode], outputs=[audio, text_input])
+
+        # 在页面底部添加公司名称
+        gr.Markdown("### © 2024 玉竹智能. All rights reserved.", elem_id="footer")
 
     initialize_fn()
     # Launch the interface

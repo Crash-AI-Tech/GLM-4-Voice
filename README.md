@@ -137,6 +137,7 @@ https://github.com/user-attachments/assets/d5ff0815-74f8-4738-b0f1-477cfc8dcc2d
 + 报错信息:cosyvoice.flow.flow_matching - ModuleNotFoundError: No module named 'matcha.models'; 'matcha' is not a package 
 
 + 解决方法: pip install matcha-TTS
+https://blog.csdn.net/weighless/article/details/140696100
 
 ### 下载模型
 + 安装 modelscope :pip install modelscope
