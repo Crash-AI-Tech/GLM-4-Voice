@@ -130,3 +130,21 @@ https://github.com/user-attachments/assets/d5ff0815-74f8-4738-b0f1-477cfc8dcc2d
 
 + 本开源仓库的代码则遵循 [Apache 2.0](LICENSE) 协议。
 
+
+## 玉竹智能补充
+
+### 安装遇到报错
++ 报错信息:cosyvoice.flow.flow_matching - ModuleNotFoundError: No module named 'matcha.models'; 'matcha' is not a package 
+
++ 解决方法: pip install matcha-TTS
+
+### 下载模型
++ 安装 modelscope :pip install modelscope
+
++ 下载模型到指定路径: modelscope download --model ZhipuAI/glm-4-voice-decoder --local_dir /path/to/custom/directory/glm-4-voice-decoder
+
+### 启动服务
++ python model_server.py --host 127.0.0.1 --model-path ./glm-4-voice-9b --port 10000 --dtype int4 --device cuda:0
+
+### 启动客户端
++ python web_demo.py --tokenizer-path  ./glm-4-voice-tokenizer --model-path ./glm-4-voice-9b --flow-path ./glm-4-voice-decoder
